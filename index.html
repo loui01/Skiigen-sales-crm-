@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skiigen Sales CRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <div class="badge">Welcome to Skiigen</div>
+        <h1>Sales CRM Dashboard</h1>
+        <p>
+          Stay on top of every opportunity with a unified workspace for
+          administrators and sales reps. Manage pipelines, track activities, and
+          celebrate wins together.
+        </p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" data-trigger="create-account">
+            Create an Account
+          </button>
+          <button class="btn btn--ghost" data-trigger="scroll-login">
+            Sign In
+          </button>
+        </div>
+      </div>
+      <div class="hero__illustration">
+        <div class="dashboard">
+          <div class="dashboard__header">
+            <div class="status-dot"></div>
+            <div class="status-bar"></div>
+          </div>
+          <div class="dashboard__metrics">
+            <div>
+              <span class="metric__label">Open Deals</span>
+              <strong class="metric__value">28</strong>
+            </div>
+            <div>
+              <span class="metric__label">Won This Month</span>
+              <strong class="metric__value">12</strong>
+            </div>
+            <div>
+              <span class="metric__label">Team Activity</span>
+              <strong class="metric__value">76%</strong>
+            </div>
+          </div>
+          <div class="dashboard__graph">
+            <div class="bar" style="height: 45%"></div>
+            <div class="bar" style="height: 65%"></div>
+            <div class="bar" style="height: 35%"></div>
+            <div class="bar" style="height: 80%"></div>
+            <div class="bar" style="height: 55%"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="login" id="login">
+        <div class="login__intro">
+          <h2>Start from your role</h2>
+          <p>
+            Whether you're organizing the pipeline or chasing the next big deal,
+            sign in below or create a new account to get started.
+          </p>
+        </div>
+        <div class="login__grid">
+          <article class="card">
+            <h3>Admin Portal</h3>
+            <p class="card__subtitle">
+              Control user access, monitor performance, and configure account
+              settings.
+            </p>
+            <form class="form" autocomplete="on">
+              <label class="form__label" for="admin-email">Email</label>
+              <input
+                class="form__input"
+                type="email"
+                id="admin-email"
+                name="admin-email"
+                placeholder="admin@skiigen.com"
+                required
+              />
+              <label class="form__label" for="admin-password">Password</label>
+              <input
+                class="form__input"
+                type="password"
+                id="admin-password"
+                name="admin-password"
+                placeholder="••••••••"
+                required
+              />
+              <button type="submit" class="btn btn--primary btn--full">
+                Log in as Admin
+              </button>
+            </form>
+            <p class="card__footer">
+              First time here?
+              <a href="#" class="link" data-trigger="create-account"
+                >Create an admin account</a
+              >
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Sales Rep Portal</h3>
+            <p class="card__subtitle">
+              Track your leads, update opportunities, and collaborate with your
+              team.
+            </p>
+            <form class="form" autocomplete="on">
+              <label class="form__label" for="rep-email">Email</label>
+              <input
+                class="form__input"
+                type="email"
+                id="rep-email"
+                name="rep-email"
+                placeholder="you@skiigen.com"
+                required
+              />
+              <label class="form__label" for="rep-password">Password</label>
+              <input
+                class="form__input"
+                type="password"
+                id="rep-password"
+                name="rep-password"
+                placeholder="••••••••"
+                required
+              />
+              <button type="submit" class="btn btn--secondary btn--full">
+                Log in as Sales Rep
+              </button>
+            </form>
+            <p class="card__footer">
+              Need access?
+              <a href="#" class="link" data-trigger="create-account"
+                >Create a user account</a
+              >
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta" id="create-account">
+        <div class="cta__content">
+          <h2>Ready to join the Skiigen team?</h2>
+          <p>
+            Tell us who you are, and we'll help you get started in minutes. New
+            accounts unlock personalized dashboards tailored to your role.
+          </p>
+        </div>
+        <div class="cta__actions">
+          <button class="btn btn--primary" data-trigger="request-demo">
+            Request a Demo
+          </button>
+          <button class="btn btn--ghost" data-trigger="scroll-login">
+            Already registered? Sign In
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        © <span id="year"></span> Skiigen CRM · Empowering teams to move deals
+        forward.
+      </p>
+    </footer>
+
+    <div class="modal" id="account-modal" aria-hidden="true">
+      <div class="modal__dialog" role="dialog" aria-modal="true">
+        <button class="modal__close" data-trigger="close-modal" aria-label="Close">
+          ×
+        </button>
+        <h3>Create your Skiigen account</h3>
+        <p class="modal__subtitle">
+          Choose your role and share a few details so we can tailor your
+          workspace.
+        </p>
+        <form class="form form--stacked">
+          <label class="form__label" for="full-name">Full name</label>
+          <input
+            class="form__input"
+            type="text"
+            id="full-name"
+            name="full-name"
+            placeholder="Jordan Taylor"
+            required
+          />
+          <label class="form__label" for="account-email">Work email</label>
+          <input
+            class="form__input"
+            type="email"
+            id="account-email"
+            name="account-email"
+            placeholder="you@company.com"
+            required
+          />
+          <label class="form__label" for="role">Role</label>
+          <select class="form__input" id="role" name="role" required>
+            <option value="">Select your role</option>
+            <option value="admin">Administrator</option>
+            <option value="rep">Sales Representative</option>
+          </select>
+          <label class="form__label" for="phone">Phone (optional)</label>
+          <input
+            class="form__input"
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="(555) 123-4567"
+          />
+          <button type="submit" class="btn btn--primary btn--full">
+            Submit registration request
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
