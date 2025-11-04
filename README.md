@@ -114,3 +114,34 @@ Skiigen CRM enables outbound sales teams to efficiently manage call campaigns an
 3. Scaffold repositories (frontend, backend, infrastructure) following this plan.
 4. Begin implementation with Foundation milestone tasks.
 
+---
+
+## Local Sign Portal Prototype
+
+To help the team experiment with onboarding flows, the repository now includes a lightweight sign portal that lets admins and
+sales reps create accounts locally. It relies exclusively on Python's standard library, so it runs anywhere without extra
+dependencies.
+
+### Running the server
+
+```bash
+python server.py
+```
+
+The server listens on <http://127.0.0.1:8000> by default. You can change the host or port by updating the `run_server` call at
+the bottom of `server.py`.
+
+### Data storage
+
+- Registrations are stored in a local SQLite database located at `data/users.db`.
+- Passwords are hashed using PBKDF2 with per-user salts.
+- Review the current records (for development only) by visiting <http://127.0.0.1:8000/users>.
+
+SQLite is a file-based database engine, so for the current prototype it **is** our database—no external service or API keys
+are required. This makes it perfect for demos, hackathons, or any situation where a single process is writing to the data
+file. To keep the data, just copy the `data/users.db` file; to reset the system, delete that file and restart the server.
+
+When you outgrow the prototype (multiple servers, concurrent writers, cloud deployments), migrate the schema to a managed
+service such as PostgreSQL. SQLite's `.dump` command can help export the data for import into the new database, so you won't
+lose the accounts created during local testing.
+
