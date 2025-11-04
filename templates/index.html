@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skiigen CRM Sign Portal</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>Skiigen CRM Sign Portal</h1>
+        <p class="subtitle">Create an account as an Admin or Sales Rep.</p>
+        <form action="/register" method="post" class="form">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Ada Lovelace" required />
+
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="ada@example.com" required />
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter a password" required minlength="8" />
+
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="">Select a role</option>
+            <option value="admin">Admin</option>
+            <option value="user">Sales Rep</option>
+          </select>
+
+          <button type="submit">Create account</button>
+        </form>
+        <p class="message {{ message_class }}">{{ message }}</p>
+      </section>
+      <section class="card info">
+        <h2>Where is my data stored?</h2>
+        <p>
+          Submitted registrations are stored in a local <strong>SQLite</strong> database file located at
+          <code>data/users.db</code>. SQLite is a self-contained, serverless database that is perfect for prototyping or local
+          demos.
+        </p>
+        <p>
+          When you're ready to move to a managed database such as PostgreSQL, you can reuse the same schema and migrate the data
+          using export tools (e.g., <code>sqlite3</code>'s <code>.dump</code> command).
+        </p>
+        <p>
+          View the current records by requesting <code>/users</code>. Protect this endpoint before deploying to production.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
